@@ -64,14 +64,24 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
 
-    public function index()
-    {
-        $users = UserModel::all(); // Mengambil semua data user
-        return view('user', ['users' => $users]); // Kirim ke view dengan nama yang sesuai
-    }
-    public function tambah()
-    {
-        return view('user_tambah');
+    // public function index()
+    // {
+    //     $users = UserModel::all(); // Mengambil semua data user
+    //     return view('user', ['users' => $users]); // Kirim ke view dengan nama yang sesuai
+    // }
+    // public function tambah()
+    // {
+    //     return view('user_tambah');
+    // }
+
+    // public function index(){
+    //     $user = UserModel::with('level')->get();
+    //     dd($user);
+    // }
+
+    public function index(){
+        $user = UserModel::with('level')->get();
+        return view('user', ['data' => $user]);
     }
 
     public function store(Request $request)
@@ -109,4 +119,6 @@ class UserController extends Controller
 
         return redirect('/user');
     }
+
+
 }
