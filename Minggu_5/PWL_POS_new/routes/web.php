@@ -5,6 +5,7 @@ use App\Http\Controllers\LevelController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\WelcomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,5 @@ Route::get('/', function () {
 Route::get('/level', [LevelController::class,'index']);
 Route::get('Kategori', [KategoriController::class, 'index']);
 Route::get('/user', [UserController::class,'index']);
+Route::get('/', [WelcomeController::class, 'index']);
+Route::get('/', [WelcomeController::class, 'index']);
