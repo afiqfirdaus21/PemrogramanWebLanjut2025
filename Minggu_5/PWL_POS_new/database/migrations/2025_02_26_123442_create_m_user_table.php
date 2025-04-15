@@ -12,13 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('m_user', function (Blueprint $table) {
-            $table->id('user_id');
-            $table->unsignedBigInteger('level_id')->index();
-            $table->string('username', 20)->unique();
+            $table->bigIncrements('user_id'); // Primary Key
+            $table->unsignedBigInteger('level_id')->index(); // Indexing untuk ForeignKey
+            $table->string('username', 20)->unique(); // Unique untuk memastikan tidak ada username yang sama
             $table->string('nama', 100);
             $table->string('password');
             $table->timestamps();
 
+            // Foreign Key Constraint
+            $table->foreign('level_id')->references('level_id')->on('m_level')->onDelete('cascade');
         });
     }
 

@@ -20,7 +20,6 @@ class UserModel extends Model
         'password',
     ];
 
-    public $timestamps = false;
 
     public function level(): BelongsTo
     {
