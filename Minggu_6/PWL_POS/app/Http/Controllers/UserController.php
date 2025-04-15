@@ -310,4 +310,38 @@ class UserController extends Controller
         }
         return redirect('/');
     }
+
+    public function confirm_ajax(string $id)
+    {
+        $user = UserModel::find($id);
+        return view('user.delete_ajax', ['user' => $user]);
+    }
+
+    public function delete_ajax(Request $request, string $id)
+    {
+        // cek apakah request dari ajax 
+        if ($request->ajax() || $request->wantsJson()) {
+            $check = UserModel::find($id);
+            if ($check) {
+                try {
+                    UserModel::destroy($id);
+                    return response()->json([
+                        'status'  => true,
+                        'message' => 'Data berhasil dihapus'
+                    ]);
+                } catch (\Illuminate\Database\QueryException $e) {
+                    return response()->json([
+                        'status'  => false,
+                        'message' => 'Data gagal dihapus karena masih terdapat tabel lain yang terkait dengan data ini'
+                    ]);
+                }
+            } else {
+                return response()->json([
+                    'status'  => false,
+                    'message' => 'Data tidak ditemukan'
+                ]);
+            }
+        }
+        return redirect('/');
+    }
 }
