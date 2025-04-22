@@ -10,6 +10,7 @@ use App\Http\Controllers\SalesController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\StokController;
 
 // Removed commented-out unused routes
 
@@ -25,6 +26,7 @@ use App\Http\Controllers\WelcomeController;
 // Route::get('/user/hapus/{id}', [UserController::class, 'hapus']);
 
 Route::get('/', [WelcomeController::class, 'index']);
+
 
 Route::group(['prefix' => 'user'], function () {
     Route::get('/', [UserController::class, 'index']); // menampilkan halaman awal user
@@ -58,6 +60,7 @@ Route::group(['prefix' => 'kategori'], function () {
     Route::get('/{id}/delete_ajax', [KategoriController::class, 'confirm_ajax']);
     Route::delete('/{id}/delete_ajax', [KategoriController::class, 'delete_ajax']);
     Route::delete('/{id}', [KategoriController::class, 'destroy']);
+    
 });
 
 Route::group(['prefix' => 'level'], function () {
@@ -75,6 +78,7 @@ Route::group(['prefix' => 'level'], function () {
     Route::get('/{id}/delete_ajax', [LevelController::class, 'confirm_ajax']);
     Route::delete('/{id}/delete_ajax', [LevelController::class, 'delete_ajax']);
     Route::delete('/{id}', [LevelController::class, 'destroy']);
+    
 });
 
 Route::group(['prefix' => 'supplier'], function () {
@@ -92,6 +96,7 @@ Route::group(['prefix' => 'supplier'], function () {
     Route::get('/{id}/delete_ajax', [SupplierController::class, 'confirm_ajax']);
     Route::delete('/{id}/delete_ajax', [SupplierController::class, 'delete_ajax']);
     Route::delete('/{id}', [SupplierController::class, 'destroy']);
+    
 });
 
 Route::group(['prefix' => 'barang'], function () {
@@ -109,4 +114,6 @@ Route::group(['prefix' => 'barang'], function () {
     Route::get('/{id}/delete_ajax', [BarangController::class, 'confirm_ajax']);
     Route::delete('/{id}/delete_ajax', [BarangController::class, 'delete_ajax']);
     Route::delete('/{id}', [BarangController::class, 'destroy']);
+    
+    
 });
